@@ -1,0 +1,520 @@
+{
+    "description": "-- 1. Отримати всі завдання певного користувача.",
+    "query": "SELECT * FROM tasks WHERE user_id = 3;",
+    "status": "success",
+    "error": null,
+    "result": [
+        [
+            2,
+            "Everyone reason station short east scene.",
+            "Back single moment ok road college six. Fast sit decide wind.\nCommercial purpose yet mother. So husband president analysis. Research education event how.",
+            3,
+            3
+        ],
+        [
+            5,
+            "Professional show future seek tough two.",
+            "Affect window option. In industry dream peace business ever field. Money do size project history. Picture agreement generation.",
+            2,
+            3
+        ],
+        [
+            10,
+            "Bank stay rest buy.",
+            "Identify officer board like series goal. Painting collection country each with add while. Wind trip wrong remember.",
+            2,
+            3
+        ],
+        [
+            11,
+            "Buy quality the term serious.",
+            "Consider world now scene never gun mention. Change might investment find.\nAnyone only evidence college kind technology student. Role crime opportunity. Phone note family near else could home such.",
+            1,
+            3
+        ],
+        [
+            18,
+            "Message even produce my.",
+            "Account kitchen center thought. Some effect very yes end pick expect.\nSpecific off notice record on.",
+            2,
+            3
+        ]
+    ]
+}
+{
+    "description": "-- 2. Вибрати завдання за певним статусом.",
+    "query": "SELECT * FROM tasks WHERE status_id = 1;",
+    "status": "success",
+    "error": null,
+    "result": [
+        [
+            1,
+            "Opportunity boy watch marriage game still.",
+            "Miss between toward report your. Traditional themselves they remain thing lose challenge. Public you way phone.",
+            1,
+            2
+        ],
+        [
+            3,
+            "Reflect check mean if let model lot.",
+            "Figure soon middle black rise blood. Option month compare serve money consumer involve cost.\nSort rock plan born senior. Care between there contain. Likely involve forget step such animal race.",
+            1,
+            5
+        ],
+        [
+            7,
+            "Cell cover husband might list final.",
+            "Least group authority listen buy could wife protect. Rate specific rich laugh rock meeting trouble.\nSong education finish example piece pass. Nothing blue you behavior low develop.",
+            1,
+            9
+        ],
+        [
+            11,
+            "Buy quality the term serious.",
+            "Consider world now scene never gun mention. Change might investment find.\nAnyone only evidence college kind technology student. Role crime opportunity. Phone note family near else could home such.",
+            1,
+            3
+        ],
+        [
+            16,
+            "Particularly own enjoy.",
+            "Yeah model number meet point plant. Meet share maintain art food heavy. State indeed dream ready grow plant.\nFace half ahead situation rock suggest lot.",
+            1,
+            8
+        ],
+        [
+            19,
+            "Management son near customer finally.",
+            "Specific rule rather only cell perhaps example. Tell operation movement door eye use. Produce new matter treatment recently.",
+            1,
+            7
+        ],
+        [
+            22,
+            "Skill health vote some.",
+            "Run common speech but. Within focus serve political throw step. Fire reach manage resource leave fine.",
+            1,
+            4
+        ],
+        [
+            23,
+            "Commercial feeling home bar change green seven suggest.",
+            "Car none budget eat industry. Thousand professional doctor within.\nThird discuss better against even which. Truth administration expert ok. Hit still others answer former first section.",
+            1,
+            9
+        ],
+        [
+            27,
+            "Wind history tend you player mention.",
+            "Toward chance cause long. Learn reveal ten either move condition. Stuff person analysis book piece second his politics. Pick discuss support full throughout yourself other through.",
+            1,
+            1
+        ],
+        [
+            30,
+            "Have quite practice accept real capital capital.",
+            "Amount to several fast step. Day many act card.\nShe paper center like how chance much. Sit white me laugh. Heart raise rich. Talk mission young fall smile pattern agreement maintain.",
+            1,
+            4
+        ]
+    ]
+}
+{
+    "description": "-- 3. Оновити статус конкретного завдання.",
+    "query": "UPDATE tasks SET status_id = (SELECT id FROM status WHERE name = 'in progress') WHERE id = 5;",
+    "status": "success",
+    "error": null,
+    "result": "Запит успішно виконаний."
+}
+{
+    "description": "-- 4. Отримати список користувачів, які не мають жодного завдання.",
+    "query": "SELECT * FROM users WHERE id NOT IN (SELECT user_id FROM tasks);",
+    "status": "success",
+    "error": null,
+    "result": []
+}
+{
+    "description": "-- 5. Додати нове завдання для конкретного користувача.",
+    "query": "INSERT INTO tasks (title, description, status_id, user_id) VALUES ('Kill Bill', 'Use sword to kill Bill', 2, 2);",
+    "status": "success",
+    "error": null,
+    "result": "Запит успішно виконаний."
+}
+{
+    "description": "-- 6. Отримати всі завдання, які ще не завершено.",
+    "query": "SELECT * FROM tasks WHERE status_id != (SELECT id FROM status WHERE name = 'completed');",
+    "status": "success",
+    "error": null,
+    "result": [
+        [
+            1,
+            "Opportunity boy watch marriage game still.",
+            "Miss between toward report your. Traditional themselves they remain thing lose challenge. Public you way phone.",
+            1,
+            2
+        ],
+        [
+            3,
+            "Reflect check mean if let model lot.",
+            "Figure soon middle black rise blood. Option month compare serve money consumer involve cost.\nSort rock plan born senior. Care between there contain. Likely involve forget step such animal race.",
+            1,
+            5
+        ],
+        [
+            7,
+            "Cell cover husband might list final.",
+            "Least group authority listen buy could wife protect. Rate specific rich laugh rock meeting trouble.\nSong education finish example piece pass. Nothing blue you behavior low develop.",
+            1,
+            9
+        ],
+        [
+            8,
+            "Each walk environmental shoulder.",
+            "Possible thought force good too. City cup box always half fly brother window. Use leave organization seven over financial next daughter.\nSister again page respond.",
+            2,
+            2
+        ],
+        [
+            10,
+            "Bank stay rest buy.",
+            "Identify officer board like series goal. Painting collection country each with add while. Wind trip wrong remember.",
+            2,
+            3
+        ],
+        [
+            11,
+            "Buy quality the term serious.",
+            "Consider world now scene never gun mention. Change might investment find.\nAnyone only evidence college kind technology student. Role crime opportunity. Phone note family near else could home such.",
+            1,
+            3
+        ],
+        [
+            15,
+            "Measure choose will fight.",
+            "Today wish body. Character one officer charge vote.\nCase wife set local I deep sell big.\nCatch and candidate blood. Day father decade position ahead. Across where film small.",
+            2,
+            8
+        ],
+        [
+            16,
+            "Particularly own enjoy.",
+            "Yeah model number meet point plant. Meet share maintain art food heavy. State indeed dream ready grow plant.\nFace half ahead situation rock suggest lot.",
+            1,
+            8
+        ],
+        [
+            17,
+            "Continue pattern meeting.",
+            "Fine remain issue most physical him because. Attention soldier pay past send its trouble against.\nWith art station evening building down our. Her seven make always customer offer.",
+            2,
+            1
+        ],
+        [
+            18,
+            "Message even produce my.",
+            "Account kitchen center thought. Some effect very yes end pick expect.\nSpecific off notice record on.",
+            2,
+            3
+        ],
+        [
+            19,
+            "Management son near customer finally.",
+            "Specific rule rather only cell perhaps example. Tell operation movement door eye use. Produce new matter treatment recently.",
+            1,
+            7
+        ],
+        [
+            20,
+            "Go cultural yard free treat.",
+            "Them eat purpose himself me behind. If government environmental community statement heart both. Change eye role blood wish opportunity course.\nNothing sea capital. Relate general scientist leave.",
+            2,
+            2
+        ],
+        [
+            22,
+            "Skill health vote some.",
+            "Run common speech but. Within focus serve political throw step. Fire reach manage resource leave fine.",
+            1,
+            4
+        ],
+        [
+            23,
+            "Commercial feeling home bar change green seven suggest.",
+            "Car none budget eat industry. Thousand professional doctor within.\nThird discuss better against even which. Truth administration expert ok. Hit still others answer former first section.",
+            1,
+            9
+        ],
+        [
+            24,
+            "Remain second prove resource actually.",
+            "Bar red evening camera past Democrat. Pretty each hot own show concern this. Plant beat break kind reality movement.\nRule level work popular.",
+            2,
+            2
+        ],
+        [
+            25,
+            "Business attorney in meeting film agreement company.",
+            "Paper nature wife success article gun. Without talk force reach statement black. Adult truth season bring ever goal age. Couple foreign avoid brother range person would.",
+            2,
+            8
+        ],
+        [
+            27,
+            "Wind history tend you player mention.",
+            "Toward chance cause long. Learn reveal ten either move condition. Stuff person analysis book piece second his politics. Pick discuss support full throughout yourself other through.",
+            1,
+            1
+        ],
+        [
+            28,
+            "Detail people customer start room.",
+            "Hotel they art bad on. Everybody scientist though.\nFour key responsibility writer court. Your away which paper simple within yet.",
+            2,
+            9
+        ],
+        [
+            29,
+            "Leg process just receive time.",
+            "Rise lay check finally customer attorney bank. What main resource hour during.\nFind its point course write. Him partner decision heavy boy several draw perform.",
+            2,
+            2
+        ],
+        [
+            30,
+            "Have quite practice accept real capital capital.",
+            "Amount to several fast step. Day many act card.\nShe paper center like how chance much. Sit white me laugh. Heart raise rich. Talk mission young fall smile pattern agreement maintain.",
+            1,
+            4
+        ],
+        [
+            5,
+            "Professional show future seek tough two.",
+            "Affect window option. In industry dream peace business ever field. Money do size project history. Picture agreement generation.",
+            2,
+            3
+        ],
+        [
+            31,
+            "Kill Bill",
+            "Use sword to kill Bill",
+            2,
+            2
+        ]
+    ]
+}
+{
+    "description": "-- 7. Видалити конкретне завдання.",
+    "query": "DELETE FROM tasks WHERE id=6;",
+    "status": "success",
+    "error": null,
+    "result": "Запит успішно виконаний."
+}
+{
+    "description": "-- 8. Знайти користувачів з певною електронною поштою.",
+    "query": "SELECT * from users WHERE email LIKE '%@%.net';",
+    "status": "success",
+    "error": null,
+    "result": [
+        [
+            7,
+            "Walter Johnston",
+            "abrewer@example.net"
+        ],
+        [
+            8,
+            "Vanessa Burke",
+            "wjones@example.net"
+        ]
+    ]
+}
+{
+    "description": "-- 9. Оновити ім'я користувача.",
+    "query": "UPDATE users SET fullname = 'Uma Thurman' WHERE id = 1;",
+    "status": "success",
+    "error": null,
+    "result": "Запит успішно виконаний."
+}
+{
+    "description": "-- 10. Отримати кількість завдань для кожного статусу.",
+    "query": "SELECT status.name, COUNT(tasks.id) FROM tasks JOIN status ON tasks.status_id = status.id GROUP BY status.name;",
+    "status": "success",
+    "error": null,
+    "result": [
+        [
+            "completed",
+            8
+        ],
+        [
+            "in progress",
+            12
+        ],
+        [
+            "new",
+            10
+        ]
+    ]
+}
+{
+    "description": "-- 11. Отримати завдання, які призначені користувачам з певною доменною частиною електронної пошти.",
+    "query": "SELECT tasks.*, fullname Name, email FROM tasks JOIN users on tasks.user_id = users.id WHERE users.email LIKE '%@%.net';",
+    "status": "success",
+    "error": null,
+    "result": [
+        [
+            14,
+            "Test card hour by man organization operation street.",
+            "Challenge mean indicate decision defense off night. Center TV military.\nCheck laugh receive follow would would include member. Suffer imagine case admit third partner.",
+            3,
+            7,
+            "Walter Johnston",
+            "abrewer@example.net"
+        ],
+        [
+            15,
+            "Measure choose will fight.",
+            "Today wish body. Character one officer charge vote.\nCase wife set local I deep sell big.\nCatch and candidate blood. Day father decade position ahead. Across where film small.",
+            2,
+            8,
+            "Vanessa Burke",
+            "wjones@example.net"
+        ],
+        [
+            16,
+            "Particularly own enjoy.",
+            "Yeah model number meet point plant. Meet share maintain art food heavy. State indeed dream ready grow plant.\nFace half ahead situation rock suggest lot.",
+            1,
+            8,
+            "Vanessa Burke",
+            "wjones@example.net"
+        ],
+        [
+            19,
+            "Management son near customer finally.",
+            "Specific rule rather only cell perhaps example. Tell operation movement door eye use. Produce new matter treatment recently.",
+            1,
+            7,
+            "Walter Johnston",
+            "abrewer@example.net"
+        ],
+        [
+            25,
+            "Business attorney in meeting film agreement company.",
+            "Paper nature wife success article gun. Without talk force reach statement black. Adult truth season bring ever goal age. Couple foreign avoid brother range person would.",
+            2,
+            8,
+            "Vanessa Burke",
+            "wjones@example.net"
+        ]
+    ]
+}
+{
+    "description": "-- 12. Отримати список завдань, що не мають опису.",
+    "query": "SELECT * FROM tasks WHERE description IS NULL",
+    "status": "success",
+    "error": null,
+    "result": []
+}
+{
+    "description": "-- 13. Вибрати користувачів та їхні завдання, які є у статусі \"в процесі\".",
+    "query": "SELECT users.fullname, tasks.title FROM tasks INNER JOIN users ON tasks.user_id = users.id INNER JOIN status ON tasks.status_id = status.id WHERE status.name = 'in progress';",
+    "status": "success",
+    "error": null,
+    "result": [
+        [
+            "Marcia Nelson",
+            "Each walk environmental shoulder."
+        ],
+        [
+            "Tyler Duncan",
+            "Bank stay rest buy."
+        ],
+        [
+            "Vanessa Burke",
+            "Measure choose will fight."
+        ],
+        [
+            "Uma Thurman",
+            "Continue pattern meeting."
+        ],
+        [
+            "Tyler Duncan",
+            "Message even produce my."
+        ],
+        [
+            "Marcia Nelson",
+            "Go cultural yard free treat."
+        ],
+        [
+            "Marcia Nelson",
+            "Remain second prove resource actually."
+        ],
+        [
+            "Vanessa Burke",
+            "Business attorney in meeting film agreement company."
+        ],
+        [
+            "Kimberly Allen",
+            "Detail people customer start room."
+        ],
+        [
+            "Marcia Nelson",
+            "Leg process just receive time."
+        ],
+        [
+            "Tyler Duncan",
+            "Professional show future seek tough two."
+        ],
+        [
+            "Marcia Nelson",
+            "Kill Bill"
+        ]
+    ]
+}
+{
+    "description": "-- 14. Отримати користувачів та кількість їхніх завдань.",
+    "query": "SELECT u.fullname, COUNT(t.id) total_tasks FROM tasks t LEFT JOIN users as u ON t.user_id = u.id GROUP BY u.fullname;",
+    "status": "success",
+    "error": null,
+    "result": [
+        [
+            "Tyler Duncan",
+            5
+        ],
+        [
+            "Adam Davis",
+            1
+        ],
+        [
+            "Walter Johnston",
+            2
+        ],
+        [
+            "Marcia Nelson",
+            7
+        ],
+        [
+            "Melinda Parker",
+            1
+        ],
+        [
+            "Jason Harvey",
+            3
+        ],
+        [
+            "Kimberly Allen",
+            3
+        ],
+        [
+            "Breanna Calhoun",
+            3
+        ],
+        [
+            "Uma Thurman",
+            2
+        ],
+        [
+            "Vanessa Burke",
+            3
+        ]
+    ]
+}
