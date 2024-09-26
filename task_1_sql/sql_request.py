@@ -9,7 +9,6 @@ logging.basicConfig(filename='db_log.json', level=logging.INFO, format='%(messag
 def log_to_json(data: dict) -> None:
     """
     Записує лог у форматі JSON.
-
     """
     with open('db_log.json', 'a', encoding='utf-8') as log_file:
         json.dump(data, log_file, ensure_ascii=False, indent=4)
@@ -26,10 +25,14 @@ def execute_query(query: str, description: str, params=None):
         "error": None,
         "result": None
     }
+    conn = None
+    cursor = None
     try:
         conn = get_db_connection()
+        if conn is None:
+            raise psycopg2.OperationalError("Неможливо підключитися до бази даних.")
+
         cursor = conn.cursor()
-        
         cursor.execute(query, params)
         
         # Перевірка типу запиту (SELECT або інший)
@@ -43,19 +46,25 @@ def execute_query(query: str, description: str, params=None):
             print("Запит успішно виконаний.")
             log_data["result"] = "Запит успішно виконаний."
 
+    except psycopg2.OperationalError as e:
+        log_data["status"] = "error"
+        log_data["error"] = f"Проблема з підключенням до бази даних: {e}"
+        print(f"Проблема з підключенням до бази даних: {e}")
+
     except psycopg2.Error as e:
         log_data["status"] = "error"
         log_data["error"] = str(e)
         print(f"Виникла помилка: {e}")
-    finally:
-        cursor.close()
-        conn.close()
-        log_to_json(log_data)
 
+    finally:
+        if cursor is not None:
+            cursor.close()
+        if conn is not None:
+            conn.close()
+        log_to_json(log_data)
 
 with open('description.txt', 'r', encoding='utf-8') as f:
     descriptions = f.readlines()
-
 
 with open('requests.sql', 'r') as f:
     sql_requests = f.readlines()
